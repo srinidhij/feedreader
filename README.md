@@ -1,6 +1,6 @@
 #Yet another RSS and Atom feed reader
 
-#Licence
+#License
 
 MIT License
 -----------------------
