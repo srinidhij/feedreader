@@ -32,7 +32,7 @@ def addFeedLink(link,title=None):
     client = MongoClient('mongodb://localhost:27017/')
     db = client.feedreader
     collection = db.feedlinks
-    
+
     flc = collection.find_one({'link':link})
         
     if flc:
@@ -63,7 +63,7 @@ def test():
     msg = addFeedLink(feed, title)
 
     if msg is None:
-        print 'Error adding feed'
+        print 'Feed added Successfully'
     else:
         print 'Error: ',msg
 
