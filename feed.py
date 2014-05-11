@@ -4,6 +4,7 @@ import simplejson as json
 from xml.etree import ElementTree
 
 class FeedManager:
+    
     def __init__(self):
         client = MongoClient('mongodb://localhost:27017/')
         db = client.feedreader
@@ -16,12 +17,11 @@ class FeedManager:
         
         for flob in flc:
             link = {}
-            '''
-            link['link'] = flob['link'].encode('ascii','ignore')
+            link['link'] = flob['link']
             link['title'] = flob['title']
             feedlinks.append(link)
-            '''
-            print flob
+
+
         return feedlinks
 
     def addFeedLink(self,link,title=None):
