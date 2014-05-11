@@ -2,6 +2,7 @@ import requests
 from pymongo import MongoClient
 import simplejson as json
 from xml.etree import ElementTree
+from bs4 import BeautifuSoup
 
 class FeedManager:
     
@@ -50,7 +51,24 @@ class FeedManager:
 
         return error
 
+    def fetchparseFeed(self, url):
+        res = requests.get(url)
+        fxml = res.text
+
+        #Use BeautifuSoup to parse XML
+
+
+        #Returned feed data is of format {link,title,description,data}
+
+
+
     def getFeeds(self):
+
+        feedData = []
+        for feed in self.getFeedLinks():
+            feedData.append(self.fetchparseFeed(feed['link']))
+
+        return feedData
         #tree = ElementTree.parse('country_data.xml')
         #root = ElementTree.fromstring(country_data_as_string)
         pass
@@ -67,7 +85,7 @@ def test():
         print 'Error: ',msg
 
     feed_links = fmg.getFeedLinks()
-    print feed_links    
+    print feed_links
 
 if __name__ == '__main__':
     test()
